@@ -61,6 +61,35 @@ Chain: Modul validasi dan pencatatan hasil hitung di blockchain (menggunakan dum
 
 ---
 
+## Flow Diagram
+
+```mermaid
+flowchart TD
+    A["Cloud ☁️"] --> B["Climate 🌍"]
+    B --> C["Chain 🔗"]
+    C --> A
+    subgraph Details
+        A1["Scalable Infra"]:::cloud
+        A2["Carbon-aware Cloud"]:::cloud
+        B1["Carbon Footprint Tracker"]:::climate
+        B2["SAFE: Smart Atlas for Environment"]:::climate
+        C1["Green Blockchain"]:::chain
+        C2["STC Certified"]:::chain
+    end
+    A --> A1
+    A --> A2
+    B --> B1
+    B --> B2
+    C --> C1
+    C --> C2
+
+classDef cloud fill:#cce5ff,stroke:#0066cc,color:#003366
+classDef climate fill:#d4edda,stroke:#28a745,color:#155724
+classDef chain fill:#f8d7da,stroke:#dc3545,color:#721c24
+```
+
+---
+
 ## Kontribusi
 
 Kontribusi sangat kami sambut! Silakan ikuti langkah berikut:
