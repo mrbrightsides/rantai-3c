@@ -1,0 +1,33 @@
+{
+  "contractName": "CarbonOffsetNFT",
+  "address": "0x1365069a97b3CbcbdeEa977AEBD5e05C78c8E9b5",
+  "abi": [
+    {"type":"function","name":"approve","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"uint256"}],"outputs":[]},
+    {"type":"function","name":"mintOffsetNFT","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"uint256"},{"type":"string"},{"type":"string"}],"outputs":[{"type":"uint256"}]},
+    {"type":"function","name":"renounceOwnership","stateMutability":"nonpayable","inputs":[],"outputs":[]},
+    {"type":"function","name":"safeTransferFrom","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"address"},{"type":"uint256"}],"outputs":[]},
+    {"type":"function","name":"safeTransferFrom","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"address"},{"type":"uint256"},{"type":"bytes"}],"outputs":[]},
+    {"type":"function","name":"setApprovalForAll","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"bool"}],"outputs":[]},
+    {"type":"function","name":"setBaseURI","stateMutability":"nonpayable","inputs":[{"type":"string"}],"outputs":[]},
+    {"type":"function","name":"transferFrom","stateMutability":"nonpayable","inputs":[{"type":"address"},{"type":"address"},{"type":"uint256"}],"outputs":[]},
+    {"type":"function","name":"transferOwnership","stateMutability":"nonpayable","inputs":[{"type":"address"}],"outputs":[]},
+    {"type":"function","name":"balanceOf","stateMutability":"view","inputs":[{"type":"address"}],"outputs":[{"type":"uint256"}]},
+    {"type":"function","name":"getApproved","stateMutability":"view","inputs":[{"type":"uint256"}],"outputs":[{"type":"address"}]},
+    {"type":"function","name":"getOffsetDetails","stateMutability":"view","inputs":[{"type":"uint256"}],"outputs":[{"type":"uint256"},{"type":"string"},{"type":"uint256"},{"type":"string"}]},
+    {"type":"function","name":"isApprovedForAll","stateMutability":"view","inputs":[{"type":"address"},{"type":"address"}],"outputs":[{"type":"bool"}]},
+    {"type":"function","name":"name","stateMutability":"view","inputs":[],"outputs":[{"type":"string"}]},
+    {"type":"function","name":"owner","stateMutability":"view","inputs":[],"outputs":[{"type":"address"}]},
+    {"type":"function","name":"ownerOf","stateMutability":"view","inputs":[{"type":"uint256"}],"outputs":[{"type":"address"}]},
+    {"type":"function","name":"supportsInterface","stateMutability":"view","inputs":[{"type":"bytes4"}],"outputs":[{"type":"bool"}]},
+    {"type":"function","name":"symbol","stateMutability":"view","inputs":[],"outputs":[{"type":"string"}]},
+    {"type":"function","name":"tokenByIndex","stateMutability":"view","inputs":[{"type":"uint256"}],"outputs":[{"type":"uint256"}]},
+    {"type":"function","name":"tokenOfOwnerByIndex","stateMutability":"view","inputs":[{"type":"address"},{"type":"uint256"}],"outputs":[{"type":"uint256"}]},
+    {"type":"function","name":"tokenURI","stateMutability":"view","inputs":[{"type":"uint256"}],"outputs":[{"type":"string"}]},
+    {"type":"function","name":"totalSupply","stateMutability":"view","inputs":[],"outputs":[{"type":"uint256"}]},
+    {"type":"event","name":"Approval","inputs":[{"type":"address","indexed":true},{"type":"address","indexed":true},{"type":"uint256","indexed":true}]},
+    {"type":"event","name":"ApprovalForAll","inputs":[{"type":"address","indexed":true},{"type":"address","indexed":true},{"type":"bool"}]},
+    {"type":"event","name":"Transfer","inputs":[{"type":"address","indexed":true},{"type":"address","indexed":true},{"type":"uint256","indexed":true}]},
+    {"type":"event","name":"OffsetCertificateMinted","inputs":[{"type":"uint256","indexed":true},{"type":"address"},{"type":"uint256"},{"type":"string"},{"type":"string"}]},
+    {"type":"event","name":"OwnershipTransferred","inputs":[{"type":"address","indexed":true},{"type":"address","indexed":true}]}
+  ]
+}
