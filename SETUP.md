@@ -49,8 +49,8 @@ For those who want to run the platform immediately:
 
 ```bash
 # Clone repository
-git clone https://github.com/mrbrightsides/3c.git
-cd 3c
+git clone https://github.com/mrbrightsides/rantai-3c.git
+cd rantai-3c
 
 # Install dependencies
 npm install
@@ -72,8 +72,8 @@ Visit the live demo: **[https://3c.elpeef.com](https://3c.elpeef.com)**
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/mrbrightsides/3c.git
-cd 3c
+git clone https://github.com/mrbrightsides/rantai-3c.git
+cd rantai-3c
 ```
 
 ### Step 2: Install Dependencies
@@ -132,16 +132,16 @@ Open browser and navigate to `http://localhost:3000`. The platform should displa
 
 RANTAI 3C currently operates without environment variables for simplicity. All configuration is embedded in the codebase.
 
-**Smart Contract Addresses** (hardcoded in source):
+**Smart Contract Addresses**:
 ```typescript
 // src/utils/contractConfig.ts
-CARBON_RECORDS_ADDRESS: "0x874378E56D92a0C4633b27A1730AD0CF8e7b4891"
-CARBON_OFFSET_ADDRESS: "0x619971f4F2ED840fB0fCD344c95fc90BE1037c44"
+CARBON_RECORDS_ADDRESS: "0x...."
+CARBON_OFFSET_ADDRESS: "0x..."
 ```
 
 **RPC Endpoint**:
 ```typescript
-RPC_URL: "https://sepolia.infura.io/v3/f8d248f838ec4f12b0f01efd2b238206"
+RPC_URL: "https://sepolia.infura.io/v3/yourownrpc"
 ```
 
 ### Optional: Custom Configuration
@@ -162,14 +162,14 @@ To modify blockchain network or contract addresses:
 RANTAI 3C smart contracts are already deployed on Ethereum Sepolia testnet.
 
 #### Carbon Records Contract
-- **Address**: `0x874378E56D92a0C4633b27A1730AD0CF8e7b4891`
+- **Address**: `0x...`
 - **Network**: Sepolia Testnet
-- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x874378E56D92a0C4633b27A1730AD0CF8e7b4891)
+- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x...)
 
 #### Carbon Offset Payment Contract
-- **Address**: `0x619971f4F2ED840fB0fCD344c95fc90BE1037c44`
+- **Address**: `0x...`
 - **Network**: Sepolia Testnet
-- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x619971f4F2ED840fB0fCD344c95fc90BE1037c44)
+- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x...)
 
 ### Deploying Custom Contracts (Optional)
 
@@ -514,11 +514,11 @@ npx tsc --noEmit
 
 If issues persist:
 
-1. **Check GitHub Issues**: [github.com/mrbrightsides/3c/issues](https://github.com/mrbrightsides/3c/issues)
+1. **Check GitHub Issues**: [github.com/mrbrightsides/rantai-3c/issues](https://github.com/mrbrightsides/rantai-3c/issues)
 2. **Contact Developer**:
    - Telegram: [@khudriakhmad](https://t.me/khudriakhmad)
    - Discord: [@khudri_61362](https://discord.com/channels/@khudri_61362)
-   - Email: support@rantai.elpeef.com
+   - Email: support@elpeef.com
 
 3. **Review Documentation**:
    - [README.md](README.md)
@@ -586,8 +586,6 @@ No authentication required. All features accessible without login.
 
 ### Smart Contract Resources
 - **Sepolia Etherscan**: [https://sepolia.etherscan.io](https://sepolia.etherscan.io)
-- **Carbon Records Contract**: [View on Explorer](https://sepolia.etherscan.io/address/0x874378E56D92a0C4633b27A1730AD0CF8e7b4891)
-- **Carbon Offset Contract**: [View on Explorer](https://sepolia.etherscan.io/address/0x619971f4F2ED840fB0fCD344c95fc90BE1037c44)
 
 ### Learning Resources
 - **Next.js Docs**: [https://nextjs.org/docs](https://nextjs.org/docs)
@@ -718,12 +716,12 @@ After successful setup:
 - **GitHub**: [@mrbrightsides](https://github.com/mrbrightsides)
 - **Telegram**: [@khudriakhmad](https://t.me/khudriakhmad)
 - **Discord**: [@khudri_61362](https://discord.com/channels/@khudri_61362)
-- **Email**: support@rantai.elpeef.com
+- **Email**: support@elpeef.com
 
 ### Project Links
 - **Live Demo**: [https://3c.elpeef.com](https://3c.elpeef.com)
-- **Repository**: [https://github.com/mrbrightsides/3c](https://github.com/mrbrightsides/3c)
-- **Issues**: [github.com/mrbrightsides/3c/issues](https://github.com/mrbrightsides/3c/issues)
+- **Repository**: [https://github.com/mrbrightsides/3c](https://github.com/mrbrightsides/rantai-3c)
+- **Issues**: [github.com/mrbrightsides/3c/issues](https://github.com/mrbrightsides/rantai-3c/issues)
 
 ### Community
 - Open source contributors welcome
@@ -739,6 +737,6 @@ After successful setup:
 
 Ready to build a sustainable future with blockchain-verified carbon management.
 
-[Live Demo](https://3c.elpeef.com) • [GitHub](https://github.com/mrbrightsides/3c) • [Documentation](README.md)
+[Live Demo](https://3c.elpeef.com) • [GitHub](https://github.com/mrbrightsides/rantai-3c) • [Documentation](README.md)
 
 </div>

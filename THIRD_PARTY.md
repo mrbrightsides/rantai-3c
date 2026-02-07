@@ -1006,7 +1006,7 @@ const response = await fetch('https://api.nft.storage/upload', {
 
 ### RANTAI 3C Support
 
-- **GitHub**: https://github.com/mrbrightsides/3c
+- **GitHub**: https://github.com/mrbrightsides/rantai-3c
 - **Telegram**: @khudriakhmad
 - **Discord**: @khudri_61362
 - **Email**: support@elpeef.com
@@ -1030,5 +1030,5 @@ const response = await fetch('https://api.nft.storage/upload', {
 
 ---
 
-*Last Updated: January 2025*  
+*Last Updated: February 2026*  
 *Platform: RANTAI 3C - Blockchain Carbon Management*

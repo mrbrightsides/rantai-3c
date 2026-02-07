@@ -57,8 +57,8 @@ Thank you for considering contributing to RANTAI 3C! This platform aims to make 
 1. **Fork the Repository**
    ```bash
    # Fork via GitHub UI, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/3c.git
-   cd 3c
+   git clone https://github.com/mrbrightsides/rantai-3c.git
+   cd rantai-3c
    ```
 
 2. **Install Dependencies**
@@ -496,7 +496,7 @@ Reviewers will evaluate:
 - **GitHub Discussions**: General questions, ideas
 - **Telegram**: [@khudriakhmad](https://t.me/khudriakhmad)
 - **Discord**: @khudri_61362
-- **Email**: support@rantai3c.com
+- **Email**: support@elpeef.com
 
 ### Getting Help
 
@@ -537,4 +537,4 @@ If you have questions about contributing, reach out through any of the communica
 
 ---
 
-*Last Updated: January 2025*
+*Last Updated: February 2026*

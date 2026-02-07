@@ -502,8 +502,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions, issues, or feature requests:
 
-- **GitHub Issues**: [Create an issue](https://github.com/mrbrightsides/3c/issues)
-- **GitHub Repository**: [github.com/mrbrightsides/3c](https://github.com/mrbrightsides/3c)
+- **GitHub Issues**: [Create an issue](https://github.com/mrbrightsides/rantai-3c/issues)
+- **GitHub Repository**: [github.com/mrbrightsides/3c](https://github.com/mrbrightsides/rantai-3c)
 - **Telegram**: [@khudriakhmad](https://t.me/khudriakhmad)
 - **Discord**: [@khudri_61362](https://discord.com/channels/@khudri_61362)
 - **Email**: support@rantai.elpeef.com
