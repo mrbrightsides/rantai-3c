@@ -1,59 +1,64 @@
 import { ethers } from 'ethers';
 import CarbonOffsetPaymentABI from '@/contracts/CarbonOffsetPayment.json';
 
-// Contract address - deployed on blockchain
 const CONTRACT_ADDRESS = '0x619971f4F2ED840fB0fCD344c95fc90BE1037c44';
 
-export interface PurchaseRecord {
-  projectId: string;
-  offsetAmount: number;
-  amountPaid: number;
-  timestamp: number;
-  ipfsHash: string;
-}
-
-/**
- * Purchase carbon offset using crypto wallet
- */
 export async function purchaseOffsetWithCrypto(
-  provider: ethers.BrowserProvider,
+  provider: ethers.providers.Web3Provider,
   projectId: string,
   offsetAmount: number,
   pricePerKg: number,
   ipfsHash: string
-): Promise<{ success: boolean; transactionHash?: string; error?: string }> {
+) {
   try {
-    const signer = await provider.getSigner();
+
+    if (!ethers.utils.isAddress(CONTRACT_ADDRESS)) {
+      throw new Error("Invalid contract address");
+    }
+
+    const signer = provider.getSigner();
+
     const contract = new ethers.Contract(
       CONTRACT_ADDRESS,
       CarbonOffsetPaymentABI.abi,
       signer
     );
 
-    // Calculate payment amount in wei (convert USD to wei at 1 USD = 0.0003 ETH for example)
-    const totalCostUSD = offsetAmount * pricePerKg;
-    const ethPrice = 0.0003; // 1 USD = 0.0003 ETH (adjust based on current rate)
-    const paymentAmount = ethers.parseEther((totalCostUSD * ethPrice).toFixed(18));
 
-    // Execute purchase transaction
+    const totalCostUSD = offsetAmount * pricePerKg;
+
+    const ethPrice = 0.0003;
+
+    const paymentAmount = ethers.utils.parseEther(
+      (totalCostUSD * ethPrice).toString()
+    );
+
+
     const tx = await contract.purchaseOffset(
       projectId,
-      Math.floor(offsetAmount * 1000), // Convert to grams for precision
+      Math.floor(offsetAmount * 1000),
       ipfsHash,
-      { value: paymentAmount }
+      {
+        value: paymentAmount
+      }
     );
+
 
     const receipt = await tx.wait();
 
+
     return {
-      success: true,
-      transactionHash: receipt.hash,
+      success:true,
+      transactionHash: receipt.transactionHash
     };
-  } catch (error) {
-    console.error('Crypto payment error:', error);
+
+  } catch(err:any){
+
+    console.error("Crypto payment error:",err);
+
     return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Payment failed',
+      success:false,
+      error:err.message
     };
   }
 }
@@ -77,7 +82,7 @@ export async function getPurchaseHistory(
     return history.map((record: any) => ({
       projectId: record.projectId,
       offsetAmount: Number(record.offsetAmount) / 1000, // Convert back from grams
-      amountPaid: Number(ethers.formatEther(record.amountPaid)),
+      amountPaid: Number(ethers.utils.formatEther(record.amountPaid)),
       timestamp: Number(record.timestamp),
       ipfsHash: record.ipfsHash,
     }));
