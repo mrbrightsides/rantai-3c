@@ -1,64 +1,69 @@
 import { ethers } from 'ethers';
 import CarbonOffsetPaymentABI from '@/contracts/CarbonOffsetPayment.json';
 
+// Contract address - deployed on blockchain
 const CONTRACT_ADDRESS = '0x619971f4F2ED840fB0fCD344c95fc90BE1037c44';
 
+export interface PurchaseRecord {
+  projectId: string;
+  offsetAmount: number;
+  amountPaid: number;
+  timestamp: number;
+  ipfsHash: string;
+}
+
+/**
+ * Validate and return contract address
+ */
+function getValidatedContractAddress(): string {
+  if (!CONTRACT_ADDRESS || !ethers.isAddress(CONTRACT_ADDRESS)) {
+    throw new Error(`Invalid contract address: ${CONTRACT_ADDRESS}`);
+  }
+  return CONTRACT_ADDRESS;
+}
+
+/**
+ * Purchase carbon offset using crypto wallet
+ */
 export async function purchaseOffsetWithCrypto(
-  provider: ethers.providers.Web3Provider,
+  provider: ethers.BrowserProvider,
   projectId: string,
   offsetAmount: number,
   pricePerKg: number,
   ipfsHash: string
-) {
+): Promise<{ success: boolean; transactionHash?: string; error?: string }> {
   try {
-
-    if (!ethers.utils.isAddress(CONTRACT_ADDRESS)) {
-      throw new Error("Invalid contract address");
-    }
-
-    const signer = provider.getSigner();
-
+    const signer = await provider.getSigner();
     const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
+      getValidatedContractAddress(),
       CarbonOffsetPaymentABI.abi,
       signer
     );
 
-
+    // Calculate payment amount in wei (convert USD to wei at 1 USD = 0.0003 ETH for example)
     const totalCostUSD = offsetAmount * pricePerKg;
+    const ethPrice = 0.0003; // 1 USD = 0.0003 ETH (adjust based on current rate)
+    const paymentAmount = ethers.parseEther((totalCostUSD * ethPrice).toFixed(18));
 
-    const ethPrice = 0.0003;
-
-    const paymentAmount = ethers.utils.parseEther(
-      (totalCostUSD * ethPrice).toString()
-    );
-
-
+    // Execute purchase transaction
     const tx = await contract.purchaseOffset(
       projectId,
-      Math.floor(offsetAmount * 1000),
+      Math.floor(offsetAmount * 1000), // Convert to grams for precision
       ipfsHash,
-      {
-        value: paymentAmount
-      }
+      { value: paymentAmount }
     );
-
 
     const receipt = await tx.wait();
 
-
     return {
-      success:true,
-      transactionHash: receipt.transactionHash
+      success: true,
+      transactionHash: receipt.hash,
     };
-
-  } catch(err:any){
-
-    console.error("Crypto payment error:",err);
-
+  } catch (error) {
+    console.error('Crypto payment error:', error);
     return {
-      success:false,
-      error:err.message
+      success: false,
+      error: error instanceof Error ? error.message : 'Payment failed',
     };
   }
 }
@@ -71,8 +76,12 @@ export async function getPurchaseHistory(
   address: string
 ): Promise<PurchaseRecord[]> {
   try {
+    if (!address || !ethers.isAddress(address)) {
+      throw new Error(`Invalid wallet address: ${address}`);
+    }
+
     const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
+      getValidatedContractAddress(),
       CarbonOffsetPaymentABI.abi,
       provider
     );
@@ -82,7 +91,7 @@ export async function getPurchaseHistory(
     return history.map((record: any) => ({
       projectId: record.projectId,
       offsetAmount: Number(record.offsetAmount) / 1000, // Convert back from grams
-      amountPaid: Number(ethers.utils.formatEther(record.amountPaid)),
+      amountPaid: Number(ethers.formatEther(record.amountPaid)),
       timestamp: Number(record.timestamp),
       ipfsHash: record.ipfsHash,
     }));
@@ -100,7 +109,7 @@ export async function getTotalOffsetAmount(
 ): Promise<number> {
   try {
     const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
+      getValidatedContractAddress(),
       CarbonOffsetPaymentABI.abi,
       provider
     );
@@ -126,6 +135,9 @@ export function generatePayPalLink(
     `Carbon Offset: ${offsetAmount.toFixed(2)}kg CO₂ via ${projectName}`
   );
   
+  // Keep description calculated for future query-param use
+  void description;
+
   // PayPal.me format: https://www.paypal.com/paypalme/username/amount
   return `https://www.paypal.com/paypalme/${paypalMeUsername}/${amount.toFixed(2)}USD`;
 }
@@ -134,5 +146,6 @@ export function generatePayPalLink(
  * Validate contract address is set
  */
 export function isContractDeployed(): boolean {
-  return CONTRACT_ADDRESS !== '0x0000000000000000000000000000000000000000';
+  return ethers.isAddress(CONTRACT_ADDRESS) &&
+    CONTRACT_ADDRESS !== '0x0000000000000000000000000000000000000000';
 }
