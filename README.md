@@ -122,7 +122,7 @@ Platform ini melayani bisnis yang peduli lingkungan, analis keberlanjutan, dan o
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/rantai-3c.git
+git clone https://github.com/mrbrightsides/rantai-3c.git
 cd rantai-3c
 ```
 
