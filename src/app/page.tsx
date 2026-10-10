@@ -107,16 +107,6 @@ export default function LandingPage(): JSX.Element {
                 Launch App
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                type="button"
-                size="lg" 
-                variant="outline"
-                onClick={handleLaunchApp}
-                className="border-2 border-green-600 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 px-8 py-6 text-lg cursor-pointer"
-              >
-                Try Demo
-                <Sparkles className="ml-2 h-5 w-5" />
-              </Button>
             </div>
 
             {/* Trust Badges */}
